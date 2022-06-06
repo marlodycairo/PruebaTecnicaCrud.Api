@@ -1,25 +1,19 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using PruebaTecnicaCrud.Api.Core.Interfaces;
+using PruebaTecnicaCrud.Api.Core.Services;
 using Shop.Api.Core.Interfaces;
-using Shop.Api.Core.Services;
 using Shop.Api.Infrastructure.Context;
 using Shop.Api.Infrastructure.Filters;
 using Shop.Api.Infrastructure.Mappers;
 using Shop.Api.Infrastructure.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 
 namespace Shop.Api
 {
@@ -54,8 +48,7 @@ namespace Shop.Api
             });
 
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IAuthorService, AuthorService>();
 
         }
 

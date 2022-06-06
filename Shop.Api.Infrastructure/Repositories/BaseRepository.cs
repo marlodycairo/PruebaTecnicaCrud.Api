@@ -49,7 +49,7 @@ namespace Shop.Api.Infrastructure.Repositories
 
         public async Task Update(T entity)
         {
-            _entities.Update(entity);
+            _context.Update(entity);
 
             await _context.SaveChangesAsync();
         }
