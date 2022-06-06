@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PruebaTecnicaCrud.Api.Core.Entities;
 using Shop.Api.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,7 @@ namespace Shop.Api.Infrastructure.Context
         {
         }
 
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Book> Books { get; set; }
     }
 }
