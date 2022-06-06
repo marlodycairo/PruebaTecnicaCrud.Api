@@ -12,34 +12,36 @@ namespace PruebaTecnicaCrud.Api.Core.Services
     public class AuthorService : IAuthorService
     {
         public IRepository<Author> _authorRepository;
+
         public AuthorService(IRepository<Author> authorRepository)
         {
             _authorRepository = authorRepository;
         }
 
-        public async Task CreateNewAuthor(Author entity)
+        public async Task CreateNewAuthor(Author author
+            )
         {
-            throw new NotImplementedException();
+            await _authorRepository.Add(author);
         }
 
-        public Task DeleteAuthor(int id)
+        public async Task DeleteAuthor(int id)
         {
-            throw new NotImplementedException();
+            await _authorRepository.Delete(id);
         }
 
-        public Task<IEnumerable<Author>> GetAllAuthors()
+        public async Task<IEnumerable<Author>> GetAllAuthors()
         {
-            throw new NotImplementedException();
+            return await _authorRepository.GetAll();
         }
 
-        public Task<Author> GetAuthorById(int id)
+        public async Task<Author> GetAuthorById(int id)
         {
-            throw new NotImplementedException();
+            return await _authorRepository.GetById(id);
         }
 
-        public Task UpdateAuthor(Author entity)
+        public async Task UpdateAuthor(Author author)
         {
-            throw new NotImplementedException();
+            await _authorRepository.Update(author);
         }
     }
 }
