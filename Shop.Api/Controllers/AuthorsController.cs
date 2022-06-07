@@ -31,6 +31,7 @@ namespace PruebaTecnicaCrud.Api.Controllers
 
             var lstAuthors = _mapper.Map<IEnumerable<AuthorResponse>>(authors);
 
+
             return Ok(lstAuthors);
         }
 

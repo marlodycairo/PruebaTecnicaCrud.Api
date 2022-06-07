@@ -6,12 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PruebaTecnicaCrud.Api.Infrastructure.Validators
+namespace PruebaTecnicaCrud.Api.Infrastructure.Validators.AuthorsValidators
 {
-    public class AuthorCreateValidator : AbstractValidator<CreateAuthor>
+    public class AuthorUpdateValidator : AbstractValidator<UpdateAuthor>
     {
-        public AuthorCreateValidator()
+        public AuthorUpdateValidator()
         {
+            RuleFor(x => x.Id)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty().WithMessage("Para la actualización se requiere el id del author.");
+
             RuleFor(x => x.FullName)
                 .Cascade(CascadeMode.Stop)
                 .NotNull().WithMessage("No se aceptan valores nulos. Debe ingresar el nombre completo");

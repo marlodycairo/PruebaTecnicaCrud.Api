@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PruebaTecnicaCrud.Api.Core.DTOs.Authors;
+using PruebaTecnicaCrud.Api.Core.DTOs.Books;
 using PruebaTecnicaCrud.Api.Core.Entities;
 
 namespace Shop.Api.Infrastructure.Mappers
@@ -16,6 +17,15 @@ namespace Shop.Api.Infrastructure.Mappers
 
             CreateMap<Author, UpdateAuthor>();
             CreateMap<UpdateAuthor, Author>();
+
+            CreateMap<Book, CreateBook>();
+            CreateMap<CreateBook, Book>();
+
+            CreateMap<Book, BookResponse>();
+            CreateMap<BookResponse, Book>();
+
+            CreateMap<Book, UpdateBook>();
+            CreateMap<UpdateBook, Book>();
         }
     }
 }
