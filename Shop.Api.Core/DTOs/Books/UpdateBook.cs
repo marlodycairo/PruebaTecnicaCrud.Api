@@ -8,6 +8,7 @@ namespace PruebaTecnicaCrud.Api.Core.DTOs.Books
 {
     public class UpdateBook
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public DateTime Date { get; set; }
         public int Genre { get; set; }
