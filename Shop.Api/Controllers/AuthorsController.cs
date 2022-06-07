@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using PruebaTecnicaCrud.Api.Core.DTOs.Authors;
 using PruebaTecnicaCrud.Api.Core.Entities;
 using PruebaTecnicaCrud.Api.Core.Interfaces;
 using System.Collections.Generic;
@@ -13,45 +15,65 @@ namespace PruebaTecnicaCrud.Api.Controllers
     public class AuthorsController : ControllerBase
     {
         public IAuthorService _authorService;
+        private readonly IMapper _mapper;
 
-        public AuthorsController(IAuthorService authorService)
+        public AuthorsController(IAuthorService authorService, IMapper mapper)
         {
             _authorService = authorService;
+            _mapper = mapper;
         }
 
         // GET: api/<AuthorsController>
         [HttpGet]
-        public async Task<IEnumerable<Author>> GetAuthors()
+        public async Task<ActionResult<AuthorResponse>> GetAuthors()
         {
-            return await _authorService.GetAllAuthors();
+            var authors = await _authorService.GetAllAuthors();
+
+            var lstAuthors = _mapper.Map<IEnumerable<AuthorResponse>>(authors);
+
+            return Ok(lstAuthors);
         }
 
         // GET api/<AuthorsController>/5
         [HttpGet("{id}")]
-        public async Task<Author> GetAuthorById(int id)
+        public async Task<ActionResult<AuthorResponse>> GetAuthorById(int id)
         {
-            return await _authorService.GetAuthorById(id);
+            var author = await _authorService.GetAuthorById(id);
+
+            var authorObj = _mapper.Map<AuthorResponse>(author);
+
+            return Ok(authorObj);
         }
 
         // POST api/<AuthorsController>
         [HttpPost]
-        public async Task CreateAuthor([FromBody] Author author)
+        public async Task<ActionResult> CreateAuthor([FromBody] CreateAuthor author)
         {
-            await _authorService.CreateNewAuthor(author);
+            var objAuthor = _mapper.Map<Author>(author);
+
+            await _authorService.CreateNewAuthor(objAuthor);
+
+            return Ok(author);
         }
 
         // PUT api/<AuthorsController>/5
         [HttpPut("{id}")]
-        public async Task UpdateAuthor([FromBody] Author author)
+        public ActionResult UpdateAuthor([FromBody] UpdateAuthor author)
         {
-            await _authorService.UpdateAuthor(author);
+            var objAuthor = _mapper.Map<Author>(author);
+
+            _authorService.UpdateAuthor(objAuthor);
+
+            return Ok();
         }
 
         // DELETE api/<AuthorsController>/5
         [HttpDelete("{id}")]
-        public async Task DeleteAuthor(int id)
+        public async Task<ActionResult> DeleteAuthor(int id)
         {
             await _authorService.DeleteAuthor(id);
+
+            return Ok();
         }
     }
 }

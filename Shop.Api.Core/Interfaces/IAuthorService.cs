@@ -12,7 +12,7 @@ namespace PruebaTecnicaCrud.Api.Core.Interfaces
         Task<IEnumerable<Author>> GetAllAuthors();
         Task<Author> GetAuthorById(int id);
         Task CreateNewAuthor(Author entity);
-        Task UpdateAuthor(Author entity);
+        void UpdateAuthor(Author entity);
         Task DeleteAuthor(int id);
     }
 }

@@ -10,7 +10,7 @@ namespace PruebaTecnicaCrud.Api.Core.Entities
     public class Author : BaseEntity
     {
         public string FullName { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public string CityOrigin { get; set; }
         public string Email { get; set; }
     }

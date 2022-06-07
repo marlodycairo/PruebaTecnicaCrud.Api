@@ -11,37 +11,43 @@ namespace PruebaTecnicaCrud.Api.Core.Services
 {
     public class AuthorService : IAuthorService
     {
-        public IRepository<Author> _authorRepository;
+        public readonly IUnitOfWork _unitOfWork;
 
-        public AuthorService(IRepository<Author> authorRepository)
+        public AuthorService(IUnitOfWork unitOfWork)
         {
-            _authorRepository = authorRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task CreateNewAuthor(Author author
             )
         {
-            await _authorRepository.Add(author);
+            await _unitOfWork.AuthorRepository.Add(author);
+
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public async Task DeleteAuthor(int id)
         {
-            await _authorRepository.Delete(id);
+            await _unitOfWork.AuthorRepository.Delete(id);
+
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Author>> GetAllAuthors()
         {
-            return await _authorRepository.GetAll();
+            return await _unitOfWork.AuthorRepository.GetAll();
         }
 
         public async Task<Author> GetAuthorById(int id)
         {
-            return await _authorRepository.GetById(id);
+            return await _unitOfWork.AuthorRepository.GetById(id);
         }
 
-        public async Task UpdateAuthor(Author author)
+        public void UpdateAuthor(Author author)
         {
-            await _authorRepository.Update(author);
+            _unitOfWork.AuthorRepository.Update(author);
+
+            _unitOfWork.SaveChanges();
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Shop.Api.Infrastructure.Repositories
         {
             await _entities.AddAsync(entity);
 
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
@@ -34,7 +34,7 @@ namespace Shop.Api.Infrastructure.Repositories
 
             _entities.Remove(entity);
 
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<T>> GetAll()
@@ -47,11 +47,11 @@ namespace Shop.Api.Infrastructure.Repositories
             return await _entities.FindAsync(id);
         }
 
-        public async Task Update(T entity)
+        public void Update(T entity)
         {
             _context.Update(entity);
 
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
         }
     }
 }

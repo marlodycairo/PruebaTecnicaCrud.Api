@@ -9,7 +9,7 @@ namespace PruebaTecnicaCrud.Api.Core.DTOs.Authors
     public class CreateAuthor
     {
         public string FullName { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public string CityOrigin { get; set; }
         public string Email { get; set; }
     }

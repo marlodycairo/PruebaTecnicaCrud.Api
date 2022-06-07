@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using PruebaTecnicaCrud.Api.Core.DTOs.Authors;
+using PruebaTecnicaCrud.Api.Core.Entities;
 
 namespace Shop.Api.Infrastructure.Mappers
 {
@@ -6,26 +8,14 @@ namespace Shop.Api.Infrastructure.Mappers
     {
         public AutomapperProfile()
         {
-            //CreateMap<Category, CategoryDto>();
-            //CreateMap<CategoryDto, Category>();
+            CreateMap<Author, CreateAuthor>();
+            CreateMap<CreateAuthor, Author>();
 
-            //CreateMap<Customer, CustomerDto>();
-            //CreateMap<CustomerDto, Customer>();
+            CreateMap<Author, AuthorResponse>();
+            CreateMap<AuthorResponse, Author>();
 
-            //CreateMap<Employee, EmployeeDto>();
-            //CreateMap<EmployeeDto, Employee>();
-
-            //CreateMap<Order, OrderDto>();
-            //CreateMap<OrderDto, Order>();
-
-            //CreateMap<OrderDetail, OrderDetailDto>();
-            //CreateMap<OrderDetailDto, OrderDetail>();
-
-            //CreateMap<Product, ProductDto>();
-            //CreateMap<ProductDto, Product>();
-
-            //CreateMap<Supplier, SupplierDto>();
-            //CreateMap<SupplierDto, Supplier>();
+            CreateMap<Author, UpdateAuthor>();
+            CreateMap<UpdateAuthor, Author>();
         }
     }
 }
